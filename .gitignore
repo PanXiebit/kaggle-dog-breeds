@@ -1,5 +1,7 @@
-test/
-train/
-sample_submission.csv
-labels.csv
+data/test/
+data/train/
+data/sample_submission.csv
+data/labels.csv
 keras-pretrained-models/
+kaggle-dog-breeds.ipynb
+ 
