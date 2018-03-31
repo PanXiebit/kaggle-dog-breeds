@@ -32,11 +32,11 @@ class DogBreedData(Dataset):
         if self.test:
             self.imgs = imgs
         elif train:
-            self.imgs = imgs[:int(0.05*imgs_num)]   # train data
-            self.labels = self.labels[:int(0.05*imgs_num)]
+            self.imgs = imgs[:int(0.001*imgs_num)]   # train data
+            self.labels = self.labels[:int(0.001*imgs_num)]
         else:
-            self.imgs = imgs[int(0.95*imgs_num):]    # val data
-            self.labels = self.labels[int(0.95 * imgs_num):]
+            self.imgs = imgs[int(0.999*imgs_num):]    # val data
+            self.labels = self.labels[int(0.999 * imgs_num):]
 
         if transforms is None:
             normalize = T.Normalize(mean = [0.485, 0.456, 0.406],
@@ -63,7 +63,7 @@ class DogBreedData(Dataset):
         if not self.test:
             labels = self.labels[index]
         else:
-            labels = self.imgs[index].split('.')[-2]
+            labels = self.imgs[index].split('.')[-2] # 测试集不存在labels
         data = Image.open(img_path)
         data = self.transforms(data)
         return data, labels
